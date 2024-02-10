@@ -1,0 +1,29 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse " id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="navbar-brand" href={% url "hello" %}>Page Hello</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href={% url "home" %}>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href={% url "creat" %}>creat todo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href={% url "user_register" %}>account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href={% url "user_login" %}>account loging</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  bg-dark"  href={% url "user_logout" %} ><input type="submit" value="logout" ></a>
+        </li>
+        </ul>
+    </div>
+  </div>
+</nav>

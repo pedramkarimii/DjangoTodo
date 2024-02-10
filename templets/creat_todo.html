@@ -1,0 +1,9 @@
+{%  extends "base.html" %}
+{% block cerat %}
+    <form action="" method="post" novalidate>
+        <h1>creat todo</h1> <br>
+        {% csrf_token %}
+        {{ todo_form.as_p }}
+        <input class="btn btn-primary" type="submit" value="creat">
+    </form>
+{% endblock cerat %}

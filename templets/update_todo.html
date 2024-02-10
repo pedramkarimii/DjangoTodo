@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+    {% block update %}
+        <form action="" method="post" novalidate>
+        <h1>Update todo</h1> <br>
+        {% csrf_token %}
+        {{ todo_form.as_p }}
+        <input class="btn btn-primary" type="submit" value="update">
+    {% endblock update%}

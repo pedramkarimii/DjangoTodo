@@ -1,0 +1,10 @@
+{% extends "base.html"%}
+{% block account_login %}
+    <form action="" method="post" novalidate >
+        <h1>accounts</h1><br>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Login" class= "btn btn-primary">
+
+    </form>
+{% endblock account_login %}

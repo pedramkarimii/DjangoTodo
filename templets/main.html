@@ -1,0 +1,42 @@
+{% extends "base.html"%}
+{% block titlemain%}main{% endblock titlemain%}
+
+
+{% block main%}
+
+{#    <h1>Main hello Django</h1>#}
+{#    {% if name == 'pedram' %}#}
+{#        <h3>True</h3>#}
+{#    {% endif %}#}
+{#    {% elif name != 'pedram' %}#}
+{#        <h3>False</h3>#}
+{#    {% else %}#}
+{#        <h2>wrong</h2>#}
+{#    {% endif %}#}
+{#    <h2>my name is {{ name | upper }}</h2>#}
+{#    <h2>my name is {{ todo}}</h2>#}
+{#    {% for Todo in todo %}#}
+{#        <h1>title: {{ Todo.title }}</h1>#}
+{#        <h2>description: {{ Todo.description }}</h2>#}
+{#        <h3>completed: {{ Todo.completed }}</h3>#}
+{#        <h4>Date: {{ Todo.create }}</h4>#}
+{#    {% endfor %}#}
+    {% if request.user.is_authenticated %}
+        <h2>Hi</h2>
+        <p>username: {{ request.user.username }}</p>
+        <p>password: {{ request.user.password }}</p>
+        <p>Email: {{ request.user.email }}</p>
+        <a class="nav-link active" aria-current="page" href={% url "user_logout" %}>logout</a>
+        <div class="card">
+
+        {% for Todo in todo %}
+{#          <a href="detail/{{ Todo.id}}/">{{ Todo.title }}</a> #}
+            <a class="nav-link card-body" href={% url "detail" Todo.id %}>{{ Todo.title }}</a><br><br>
+        {% endfor %}
+    </div>
+     {% else %}
+        <h2>First Login </h2>
+        <a class="nav-link active" aria-current="page" href={% url "user_login" %}>login</a>
+        <a class="nav-link active" aria-current="page" href={% url "user_register" %}>register</a>
+    {% endif %}
+{% endblock main%}

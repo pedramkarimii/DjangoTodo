@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>{% block titlehello%}
+    {% endblock titlehello%}
+    {% block titlemain%}
+{% endblock titlemain%}</title>
+
+    <style>
+        .jumbotron{
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: lavender;
+        }
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+{#        {% include "creat_todo.html" %}#}
+
+
+    <div class="jumbotron ">
+        {% include "messages.html" %}
+        {% block account %}{% endblock account %}
+
+        {% block account_login %} {% endblock account_login %}
+
+        {% block update %}{% endblock update%}
+
+        {% block cerat %}{% endblock cerat %}
+
+        {% block main%}{% endblock main%}
+
+        {% block hello%}{% endblock hello%}
+
+        {% block detail%}{% endblock detail%}
+
+    </div>
+</body>
+</html>
