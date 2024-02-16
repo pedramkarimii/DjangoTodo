@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 
+from django.db import IntegrityError
+from django.http import HttpResponseNotFound, HttpResponse
 
 # Create your views here.
 
@@ -13,9 +15,13 @@ def user_register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            User.objects.create_user(cd['username'], cd['email'], cd['password'])
-            messages.success(request, 'Registered successfully', 'success')
-            return redirect('home')
+            try:
+                User.objects.create_user(cd['username'], cd['email'], cd['password'])
+                messages.success(request, 'Registered successfully', 'success')
+                return HttpResponse(status=200)  
+            except IntegrityError:
+                messages.error(request, 'Username or email already exists', 'danger')
+                return HttpResponseNotFound('User registration failed. Please try again.', status=404)
     else:
         form = UserRegisterForm()
     return render(request, 'user_register.html', context={'form': form})
